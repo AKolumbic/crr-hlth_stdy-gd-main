@@ -148,10 +148,12 @@ This project contains a generic interactive study guide app for interview prepar
 2. `npm install`
 3. `npm run dev`
 
-### Backend
+### Backend (Recommended: Use a Virtual Environment)
 1. `cd backend`
-2. `pip install -r requirements.txt`
-3. `uvicorn main:app --reload`
+2. `python3 -m venv venv`
+3. `source venv/bin/activate`
+4. `pip install -r requirements.txt`
+5. `uvicorn main:app --reload`
 
 ---
 
