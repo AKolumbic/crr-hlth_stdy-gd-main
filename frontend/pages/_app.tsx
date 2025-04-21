@@ -1,16 +1,21 @@
 import * as React from 'react';
 import type { AppProps } from 'next/app';
-import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import { CssBaseline } from '@mui/material';
 import NavBar from '../components/NavBar';
-
-const theme = createTheme();
+import Footer from '../components/Footer';
+import { ThemeContextProvider } from '../components/ThemeContext';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeContextProvider>
       <CssBaseline />
-      <NavBar />
-      <Component {...pageProps} />
-    </ThemeProvider>
+      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        <NavBar />
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+          <Component {...pageProps} />
+        </div>
+        <Footer />
+      </div>
+    </ThemeContextProvider>
   );
 }

@@ -1,10 +1,7 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
+import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import Link from 'next/link';
+import ThemeSwitcher from './ThemeSwitcher';
 
 const sections = [
   { label: 'Home', path: '/' },
@@ -19,23 +16,25 @@ const sections = [
 
 export default function NavBar() {
   return (
-    <AppBar position="static">
+    <AppBar position="static" color="primary" sx={{ mb: 4 }}>
       <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          Study Guide
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>
+            Study Guide
+          </Link>
         </Typography>
-        <Box>
+        <Box sx={{ display: 'flex', gap: 1 }}>
           {sections.map((section) => (
             <Button
               key={section.path}
               color="inherit"
               component={Link}
               href={section.path}
-              sx={{ ml: 1 }}
             >
               {section.label}
             </Button>
           ))}
+          <ThemeSwitcher />
         </Box>
       </Toolbar>
     </AppBar>
